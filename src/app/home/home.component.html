@@ -17,7 +17,7 @@
         <p class="card-text">{{blog.description}}</p>
       </div>
       <div class="card-footer text-muted">
-        <button class="btn btn-info"><a [routerLink]="['/blog',blog.blogId]"></a>View</button>
+        <a class="btn btn-info"[routerLink]="['/blog',blog.blogId]">View</a>
       </div>
     </div>
   </div>

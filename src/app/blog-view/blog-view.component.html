@@ -1,3 +1,35 @@
-<p>
-  blog-view works!
-</p>
+<div class="container">
+  <div class="row mt-5" *ngIf="currentBlog">
+    <div class="col-md-12">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{currentBlog.title | uppercase}}
+          </h5>
+          <p class="card-text">Posted by Author:{{currentBlog.author}} on {{currentBlog.created}}</p>
+          <p class="card-text">Catagory:{{currentBlog.catagory}}</p>
+          <p class="card-text">{{currentBlog.bodyHtml}}</p>
+        </div>
+        <hr>
+        <div class="card-footer text-muted">
+          <p class="card-text">{{currentBlog.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5" *ngIf="currentBlog">
+    <div class="col-md-4 mb-2">
+      <a class="btn btn-info" [routerLink]="['/edit',currentBlog.blogId]">
+        Edit
+      </a>
+    </div>
+    <div class="col-md-4 mb-2">
+      <a class="btn btn-danger" (click)="deleteThisBlog()">Delete</a>
+    </div>
+    <div class="col-md-4 mb-2">
+      <a class="btn btn-warning" (click)="previousPage()">
+        Go Back
+      </a>
+    </div>
+
+  </div>
