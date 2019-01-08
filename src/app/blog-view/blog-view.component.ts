@@ -57,6 +57,7 @@ export class BlogViewComponent implements OnInit {
     console.log(myBlogId);
     // calling the getSingleBlogInformation function
     this.getSingleBlogInformation(myBlogId);
+    console.log(this.getSingleBlogInformation(myBlogId));
   }
   public getSingleBlogInformation(currentBlogId):any{
     for(let blog of this.allBlogs){
