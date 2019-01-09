@@ -7,6 +7,7 @@ import { RootObject } from './IBlog';
 @Injectable({
   providedIn: 'root'
 })
+
 export class BlogHttpService {
 
   public allBlogs = [];
@@ -22,17 +23,20 @@ export class BlogHttpService {
     );
   }
 
-  public getSingleBlogInformation(currentBlogId): any {
-    return this.http.get<RootObject>(this.baseUrl + 'view/' + currentBlogId + '?authToken=' + this.authToken);
-  }
-
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || 'Server Error');
   }
 
+  getSingleBlog(blogId): any {
+
+    let myResponse = this.http.get(this.baseUrl + 'view/' + blogId + '?authToken=' + this.authToken)
+    return myResponse;
+
+  }
+
   createBlog(blogData): any {
 
-    let myResponse = this.http.post(this.baseUrl + '/create' + '?authToken=' + this.authToken, blogData)
+    let myResponse = this.http.post(this.baseUrl + 'create' + '?authToken=' + this.authToken, blogData)
     return myResponse;
 
   }
@@ -40,15 +44,15 @@ export class BlogHttpService {
   deleteBlog(blogId): any {
 
     let data = {}
-    let myResponse = this.http.post(this.baseUrl + '/' + blogId + '/delete' + '?authToken=' + this.authToken, data)
+    let myResponse = this.http.post(this.baseUrl + blogId + '/delete' + '?authToken=' + this.authToken, data)
     return myResponse;
 
   }
 
-  editBlog(blogId, blogData): any {
+  editBlog(blogId,blogData): any {
 
-
-    let myResponse = this.http.put(this.baseUrl + '/' + blogId + '/edit' + '?authToken=' + this.authToken, blogData)
+    
+    let myResponse = this.http.put(this.baseUrl  + blogId + '/edit' + '?authToken=' + this.authToken, blogData)
     return myResponse;
 
   }

@@ -2,18 +2,17 @@
   <div class="col-md-12 text-center">
     <h3>All blogs</h3>
   </div>
-  <h1 class="text-danger" *ngIf='errorMsg'>{{errorMsg}}</h1>
 </div>
 <hr>
 
-<div class="row mt-5" *ngIf='allBlogs.length > 0'>
+<div class="row mt-5" *ngIf="allBlogs.length>0" >
   <div class="col-md-4 mb-3" *ngFor="let blog of allBlogs">
     <div class="card text-center">
       <div class="card-body">
         <h5 class="card-title">
           {{blog.title | uppercase}}
         </h5>
-        <p class="card-text">Category:{{blog.catagory}}</p>
+        <p class="card-text">Category:{{blog.category}}</p>
         <p class="card-text">Author:{{blog.author}}</p>
         <p class="card-text">{{blog.description}}</p>
       </div>
