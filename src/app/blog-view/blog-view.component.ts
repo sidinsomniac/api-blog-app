@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { viewAttached } from '@angular/core/src/render3/instructions';
-import { BlogService } from '../blog.service';
+import { BlogHttpService } from '../blog-http.service';
 @Component({
   selector: 'app-blog-view',
   templateUrl: './blog-view.component.html',
   styleUrls: ['./blog-view.component.css']
 })
 export class BlogViewComponent implements OnInit {
-  public currentBlog;
+  public currentBlog = [];
+  public errorMsg;
 
-  constructor( private _route: ActivatedRoute, private router: Router, public blogService:BlogService) { }
+  constructor( private _route: ActivatedRoute, private router: Router, public blogHttpService:BlogHttpService) { }
 
   ngOnInit() {
     let myBlogId = this._route.snapshot.paramMap.get('blogId');
-    this.currentBlog = this.blogService.getSingleBlogInformation(myBlogId);
-  }
-  
+    this.blogHttpService.getSingleBlogInformation(myBlogId)
+      .subscribe( data => this.currentBlog = data['data'] , error => this.errorMsg = error );
+  }  
 }

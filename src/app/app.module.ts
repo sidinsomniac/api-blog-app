@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 // *******
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule }    from '@angular/common/http';
 
 // <components>
 import { AppComponent } from './app.component';
@@ -35,7 +36,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
       { path: 'create', component: PostBlogComponent },
       { path: 'edit/:blogId', component: BlogEditComponent },
       { path: '**', component: NotFoundComponent }
-    ])
+    ]),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
